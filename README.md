@@ -1,6 +1,6 @@
 # PROXY DJANGO
 
-how to run:
+### how get a proxy list locally:
 
 at the same folder as main.py, type on a terminal:
 ```
@@ -16,3 +16,11 @@ like:
 
 
 enjoy!
+
+
+### for devs:
+this will be an endpoint!
+
+as soon as i get the work started, new information will be added here.
+
+:)
