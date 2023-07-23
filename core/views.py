@@ -1,6 +1,8 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import JsonResponse
+
+from core.main_proxy_svc import get_proxies_from_freeapiproxies
 
 
-def index(request):
-    return HttpResponse("Hello, world!")
+def get_proxies(request):
+    proxy_list = get_proxies_from_freeapiproxies()
+    return JsonResponse({"proxy_list": proxy_list})
