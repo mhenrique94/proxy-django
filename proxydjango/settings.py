@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".vercel.app"]
 
 
 # Application definition
@@ -82,7 +82,7 @@ DATABASES = {
         "NAME": os.environ.get("DB_NAME"),
         "USER": os.environ.get("DB_USER"),
         "PASSWORD": os.environ.get("DB_PASS"),
-        "HOST": "localhost",
+        "HOST": "postgres://marcelosilva:G8lmgvWYkH8ZStkT6F9uB4w1CLl3d14X@dpg-ciuib5diuiedpv09061g-a.oregon-postgres.render.com/proxydjango",
         "PORT": "5432",
     }
 }
