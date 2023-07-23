@@ -11,14 +11,17 @@ def get_proxies_from_freeapiproxies():
     proxy_site_url = 'https://freeapiproxies.azurewebsites.net/proxyapi?count=1000'
     res = requests.get(proxy_site_url, headers={'User-Agent': user_agent})
     proxies = json.loads(res.text)
+    raw_data = list()
     for item in proxies:
-        if len(item["type"]) > 1:
-            if "SOCKS5" in item["type"]:
-                item["type"] = "SOCKS5"
-            else:
-                item["type"] = "HTTPS"
-        else:
-            item["type"] = item["type"][0].upper()
-        proxy_list.append(f'{item["type"].strip()}://{item["ip"].strip()}:{item["port"].strip()}')
+      raw_data.append(item)
+      if len(item["type"]) > 1:
+          if "SOCKS5" in item["type"]:
+              item["type"] = "SOCKS5"
+          else:
+              item["type"] = "HTTPS"
+      else:
+          item["type"] = item["type"][0].upper()
+      proxy_list.append(f'{item["type"].strip()}://{item["ip"].strip()}:{item["port"].strip()}')
     del proxy_list[-1]
-    return proxy_list
+
+    return proxy_list, raw_data
