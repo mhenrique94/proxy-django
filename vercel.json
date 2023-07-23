@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "proxydjango/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "proxydjango/wsgi.py"
+    }
+  ]
+}

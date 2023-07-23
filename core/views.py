@@ -9,4 +9,4 @@ def get_proxies(request):
         proxy_list, raw_data = get_proxies_from_freeapiproxies()
     except Exception:
         return JsonResponse(status=HTTPStatus.SERVICE_UNAVAILABLE)
-    return JsonResponse({ "proxy_list": proxy_list, "raw_data": raw_data })
+    return JsonResponse({"proxy_list": proxy_list, "raw_data": raw_data})
