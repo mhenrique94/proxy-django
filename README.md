@@ -21,5 +21,22 @@ enjoy!
 ### for devs:
 this will be an endpoint!
 <br>as soon as i get the work started, new information will be added here.
+This project runs on django 4.2, python3, postgresql and everything else that can be found in requirements.txt
 
+Be aware the a basic setup is needed:
+- setup the database, including user and roles;
+- a virtual environment
+- the .env with the keys.
+<br>Hope it helps:
+https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-20-04
+
+
+
+1. at the root folder of the project, run on terminal:
+```
+pip install -r requirements.txt
+./manage.py makemigrations
+./manage.py migrate
+./manage.py runserver
+```
 :)
