@@ -1,5 +1,7 @@
 # PROXY DJANGO
 
+For a proxylist web version, visit: https://proxy-django.onrender.com
+___
 ### how to get a proxy list locally:
 
 at the same folder as main.py, type on a terminal:
@@ -14,6 +16,7 @@ like:
 <br>SOCKS5://104.17.248.164:80
 <br>HTTP://190.217.101.77:999
 
+ps.: a different list an be build on each run
 
 enjoy!
 
@@ -32,7 +35,7 @@ https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your
 
 
 
-1. at the root folder of the project, run on terminal:
+At the root folder of the project, run on terminal:
 ```
 pip install -r requirements.txt
 ./manage.py makemigrations
