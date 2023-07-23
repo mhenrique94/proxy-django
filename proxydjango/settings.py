@@ -27,12 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
+DEBUG = os.getenv("DEBUG", "0").lower() in ["true", "t", "1"]
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(" ")
 
 # Application definition
 
@@ -79,6 +76,7 @@ WSGI_APPLICATION = "proxydjango.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+DATABASES = {}
 if DEBUG:
     DATABASES = {
         "default": {
@@ -86,13 +84,16 @@ if DEBUG:
             "NAME": os.environ.get("DB_NAME"),
             "USER": os.environ.get("DB_USER"),
             "PASSWORD": os.environ.get("DB_PASS"),
-            "HOST": "postgres://marcelosilva:G8lmgvWYkH8ZStkT6F9uB4w1CLl3d14X@dpg-ciuib5diuiedpv09061g-a.oregon-postgres.render.com/proxydjango",
+            "HOST": "localhost",
             "PORT": "5432",
         }
     }
 else:
     DATABASES = {
-    'default': dj_database_url.config(     default='postgres://marcelosilva:G8lmgvWYkH8ZStkT6F9uB4w1CLl3d14X@dpg-ciuib5diuiedpv09061g-a/proxydjango',        conn_max_age=600    ) }
+        "default": dj_database_url.parse(
+            os.environ.get("DATABASE_URL"), conn_max_age=600
+        )
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
