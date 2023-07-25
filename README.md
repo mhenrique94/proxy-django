@@ -1,6 +1,15 @@
 # PROXY DJANGO
+___
 
-For a proxylist web version, visit: https://proxy-django.onrender.com
+PT: Esse projeto foi desenvolvido com o intuito de praticar desenvolvimento back-end por meio da criação de uma API, do serviço para manipulação local de lotes de texto, deploy (colocar no ar) no render.com, da implementação de modelo e manipulação de banco de dados e, futuramente, o consumo desses dados por meio de um projeto paralelo de front-end (página da web).
+
+EN: This project was developed aiming the practice of back-end development through an API design, a service to manipulate local text chuncks, the deploy on render.com, through the implementation and manupalation of database model, and furthermore, the data consumption through a paralel front-end project (web-page).
+
+PT: Para a versão web com a lista de proxy, visite:
+EN: For a proxylist web version, visit:
+
+https://proxy-django.onrender.com
+
 ___
 ### how to get a proxy list locally:
 
