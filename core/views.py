@@ -1,7 +1,7 @@
 from http import HTTPStatus
 from django.http import JsonResponse
 
-from core.main_proxy_svc import get_proxies_from_db
+from core.services.main_proxy_svc import get_proxies_from_db
 
 
 def get_proxies(request):

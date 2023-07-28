@@ -1,6 +1,6 @@
 import requests
 import json
-from .models import Proxy
+from ..models import Proxy
 
 filename = "proxylist.txt"
 user_agent = (
