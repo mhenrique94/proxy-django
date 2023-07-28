@@ -1,8 +1,6 @@
 from http import HTTPStatus
 import json
 
-import pytest
-
 from core.views import get_proxies
 
 
