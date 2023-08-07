@@ -1,20 +1,11 @@
-import requests
-import json
 from ..models import Proxy
-
-filename = "proxylist.txt"
-user_agent = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-    "(KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
-)
+from core.api import api
 
 
 def get_proxies_from_freeapiproxies():
     proxy_list = list()
     try:
-        proxy_site_url = "https://freeapiproxies.azurewebsites.net/proxyapi?count=1000"
-        res = requests.get(proxy_site_url, headers={"User-Agent": user_agent})
-        proxies = json.loads(res.text)
+        proxies = api.proxies_request()
         raw_data = list()
         for item in proxies:
             raw_data.append(item)
@@ -26,7 +17,7 @@ def get_proxies_from_freeapiproxies():
             else:
                 item["type"] = item["type"][0].upper()
             proxy_list.append(
-                f'{item["type"].strip()}://{item["ip"].strip()}:{item["port"].strip()}'
+                f'{item["type"].strip()}://{item["ip"].strip()}:{str(item["port"]).strip()}'
             )
         del proxy_list[-1]
     except Exception:
@@ -48,7 +39,7 @@ def get_proxies_from_db(manual_init=False):
             proxy = Proxy()
 
             proxy.ip = p["ip"].strip()
-            proxy.port = int(p["port"].strip())
+            proxy.port = int(str(p["port"]).strip())
             proxy.type = p["type"].strip()
             proxy.country = p["country"].strip()
             proxy.provider = p["provider"].strip()
@@ -59,7 +50,6 @@ def get_proxies_from_db(manual_init=False):
             proxy.city = p["city"].strip()
             proxy.latitude = p["latitude"].strip()
             proxy.longitude = p["longitude"].strip()
-            proxy.portPreferred = int(p["portPreferred"].strip())
 
             proxy.save()
 
